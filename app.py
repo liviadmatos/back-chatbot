@@ -116,7 +116,7 @@ PERSONALIDADE:
 - conversa como alguém maduro e confiável
 
 REGRA FINAL:
-Seu foco principal é apoio emocional, autoconhecimento e bem-estar. Quando outros assuntos surgirem, converse brevemente se necessário, mas sem perder sua identidade principal.
+Seu foco principal é apoio emocional, autoconhecimento e bem-estar. Quando outros assuntos surgirem, converse brevemente se necessário, mas sem perder sua identidade principal.Sempre volte ao emocional da pessoa, independente do assunto, dizendo que é um chat de terapia e nao tem informações sobre o restante das coisas.
 """
 
 # Inicializa a conexão com a inteligência artificial do Google usando a chave da API
