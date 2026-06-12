@@ -1,6 +1,5 @@
 from flask import Flask, request, session, jsonify
 from flask_socketio import SocketIO, emit
-from flask_cors import CORS
 from google import genai
 from google.genai import types
 from dotenv import load_dotenv
@@ -126,9 +125,6 @@ client = genai.Client(api_key=os.getenv("GENAI_KEY"))
 # Cria o nosso aplicativo web principal (o servidor)
 app = Flask(__name__)
 
-# Habilita CORS para todo o app
-CORS(app, supports_credentials=True)
-
 # A 'secret_key' funciona como uma senha interna do servidor para proteger 
 # e criptografar os dados da sessão (as "lembranças" de quem é quem).
 app.secret_key = "ch@tb07"
@@ -136,7 +132,7 @@ app.secret_key = "ch@tb07"
 # Adiciona a funcionalidade de WebSockets (comunicação em tempo real) ao nosso app.
 # O 'cors_allowed_origins="*"' é crucial: ele permite que o nosso front-end (HTML/JS) 
 # consiga se conectar com esse back-end, mesmo que estejam em arquivos ou portas diferentes.
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode="gevent")
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Dicionário que funciona como a "memória temporária" do servidor. 
 # Ele guarda a conversa de cada aluno separadamente usando um ID único.
@@ -281,5 +277,3 @@ def handle_disconnect():
 # Inicia o servidor local. A porta padrão do Flask costuma ser a 5000.
 if __name__ == "__main__":
     socketio.run(app)
-
-# Para Vercel e deploy em produção, o servidor é iniciado via wsgi.py
